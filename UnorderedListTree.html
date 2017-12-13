@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		.hide{
+			display: none;
+		}
+		.show{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="treePane"></div>
+	<div id="tabPane"></div>
+	<script type="text/javascript">
+		var tp = document.querySelector("#treePane");
+		tp.innerHTML = "<ul id='ul_root'></ul>";
+		var ul_root = document.querySelector("#ul_root");
+		for(i = 1; i <= 5; i++){
+			ul_root.innerHTML += "<li id='li_root_" + i + "' onClick='ShowOrHide(this, event)'>Root List " + i +"</li>";
+			var li_root = document.querySelector("#li_root_" + i);
+			li_root.innerHTML += "<ul class='hide' id='ul_sub_" + i + "'></ul>";
+			var ul_sub = document.querySelector("#ul_sub_" + i);
+			for(j = 1; j <= 5; j++){
+				ul_sub.innerHTML += "<li id='li_sub_" + i + j + "' onClick='ShowOrHide(this, event)'>Sub List " + i + j + "</li>";
+				var li_sub = document.querySelector("#li_sub_" + i + j);
+				li_sub.innerHTML += "<ul class='hide' id='ul_sub_sub_" + i + j + "'></ul>";
+				var ul_sub_sub = document.querySelector("#ul_sub_sub_" + i + j);
+				for(k = 1; k <= 5; k++){
+					ul_sub_sub.innerHTML += "<li id='li_sub_sub_" + i + j + k + "'>Sub Sub List " + i + j + k + "</li>";
+				}
+			}
+		}
+
+		function ShowOrHide(elem, e){
+				var children = elem.children;
+					for(i = 0; i<children.length; i++){
+						var c = children[i].classList;
+						if(c.contains("show")){
+							c.add('hide');
+							c.remove('show');
+						}
+						else{
+							c.add('show');
+							c.remove('hide');
+						}
+					}
+					e.stopPropagation();
+		}
+	</script>
+</body>
+</html>
