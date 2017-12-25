@@ -28,7 +28,7 @@
 				li_sub.innerHTML += "<ul class='hide' id='ul_sub_sub_" + i + j + "'></ul>";
 				var ul_sub_sub = document.querySelector("#ul_sub_sub_" + i + j);
 				for(k = 1; k <= 5; k++){
-					ul_sub_sub.innerHTML += "<li id='li_sub_sub_" + i + j + k + "' onClick='event.stopPropagation()'>Sub Sub List " + i + j + k + "</li>";
+					ul_sub_sub.innerHTML += "<li id='li_sub_sub_" + i + j + k + "' onClick='ShowOrHide(this, event)'>Sub Sub List " + i + j + k + "</li>";
 				}
 			}
 		}
